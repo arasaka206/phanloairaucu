@@ -1,6 +1,6 @@
 import streamlit as st
 
-import tensorflow as tf
+import tensorflow 
 import numpy as np
 import pandas as pd
 import keras
