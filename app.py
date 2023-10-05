@@ -10,7 +10,7 @@ import cv2
 st.set_option('deprecation.showfileUploaderEncoding', False)
 st.cache(allow_output_mutation=True)
 
-st.title('Ứng dụng dự đoán dư lượng thuốc trừ sâu')
+st.title('Ứng dụng dự đoán tình trạng thuốc trừ sâu ở rau xanh')
 
 file = st.file_uploader("Bạn vui lòng nhập ảnh để phân loại ở đây")
 if file is None:
