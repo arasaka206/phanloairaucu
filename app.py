@@ -51,7 +51,7 @@ else:
         slot.text('Hệ thống đang thực thi chẩn đoán....')
         
         pred = preprocessing_uploader(file, model)
-        st.text(pred)
+        st.text(pred[1])
         test_image = Image.open(file)
         st.image(test_image, caption="Ảnh đầu vào", width = 400)
         class_names = ['chuaphun', 'phun5ngay']
