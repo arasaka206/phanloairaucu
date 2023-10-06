@@ -15,12 +15,12 @@ def load_model():
 	return model
 def predict_class(image, model):
 # 	image = tf.cast(image, tf.float32)
-	image = np.resize(image, (224,224))
+        image = np.resize(image, (224,224))
 # 	image_1 = image
-	image = np.dstack((image,image,image))
+        image = np.dstack((image,image,image))
 # 	image_2 = image
 # 	cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
-	image = np.expand_dims(image, axis = 0)         
+        image = np.expand_dims(image, axis = 0)         
         prediction = model.predict(image)
         return prediction
 
