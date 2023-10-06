@@ -11,7 +11,7 @@ from tensorflow.keras.preprocessing.image import load_img
 from io import BytesIO
 
 def load_model():
-	model = tf.keras.models.load_model('basic.h5')
+	model = tf.keras.models.load_model('model2.h5')
 	return model
 def predict_class(image, model):
 # 	image = tf.cast(image, tf.float32)
