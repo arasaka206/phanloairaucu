@@ -51,17 +51,16 @@ else:
         slot.text('Hệ thống đang thực thi chẩn đoán....')
         
         pred = preprocessing_uploader(file, model)
-        st.text(pred)
         test_image = Image.open(file)
         st.image(test_image, caption="Ảnh đầu vào", width = 400)
         class_names = ['chuaphun', 'phun5ngay']
 
         result = class_names[np.argmax(pred)]
         
-        if str(result) == 'chuaphun:':
+        if pred[0,0] == 0:
             statement = str('Chẩn đoán của mô hình học máy: **Rau chưa được phun thuốc trừ sâu**')
             st.success(statement)
-        elif str(result) == 'phun5ngay':
+        else:
             statement = str('Chẩn đoán của mô hình học máy: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
             st.error(statement)
         slot.success('Hoàn tất!')
