@@ -59,8 +59,8 @@ else:
         
         if pred[0,0] == 0:
             statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
-            st.success(statement)
+            st.error(statement)
         else:
             statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
-            st.error(statement)
+            st.success(statement)
         slot.success('Hoàn thành chẩn đoán!')
