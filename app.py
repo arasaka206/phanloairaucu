@@ -58,9 +58,9 @@ else:
         result = class_names[np.argmax(pred)]
         
         if pred[0,0] == 0:
-            statement = str('Chẩn đoán của mô hình học máy: **Rau chưa được phun thuốc trừ sâu**')
+            statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
             st.success(statement)
         else:
-            statement = str('Chẩn đoán của mô hình học máy: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
+            statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
             st.error(statement)
-        slot.success('Hoàn tất!')
+        slot.success('Hoàn thành chẩn đoán!')
