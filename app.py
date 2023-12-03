@@ -57,7 +57,7 @@ else:
 
         result = class_names[np.argmax(pred)]
         
-        if pred[0,0] == 0:
+        if reuslt == 0:
             statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
             st.error(statement)
         else:
