@@ -33,8 +33,8 @@ def preprocessing_uploader(file, model):
     image = Image.open(BytesIO(bytes_data))
     image = image.convert("RGB")
     image = image.resize(inputShape)
-#    image = img_to_array(image)
-#    image = np.expand_dims(image, axis=0)
+    image = img_to_array(image)
+    image = np.expand_dims(image, axis=0)
     
     prediction = model.predict(image) 
     return prediction
