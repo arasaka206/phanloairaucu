@@ -13,7 +13,11 @@ from io import BytesIO
 def load_model():
 	model = tf.keras.models.load_model('softmax.h5')
 	return model
-def predict_class(image, model):
+def predict_class(file, model):
+	bytes_data = file.read()
+    	inputShape = (224, 224)
+    	image = Image.open(BytesIO(bytes_data))
+    	image = image.convert("RGB")
 # 	image = tf.cast(image, tf.float32)
         image = np.resize(image, (224,224))
 # 	image_1 = image
@@ -50,7 +54,7 @@ else:
         slot = st.empty()
         slot.text('Hệ thống đang thực thi chẩn đoán....')
         	
-        pred = preprocessing_uploader(file, model)
+        pred = predict_class(file, model)
         test_image = Image.open(file)
         st.image(test_image, caption="Ảnh đầu vào", width = 400)
         class_names = ['chuaphun', 'phun5ngay']
