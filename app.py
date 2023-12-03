@@ -26,11 +26,24 @@ def predict_class(file, model):
 	image = np.expand_dims(image, axis = 0)         
 	prediction = model.predict(image)
 	return prediction
+def tach_kenh_mau(buc_hinh, kenh):
+    image = Image.open(buc_hinh)
+    channels = list(image.split())
 
+    if kenh == 'R':
+        channel_image = Image.merge('RGB', (channels[0], Image.new('L', image.size, 0), Image.new('L', image.size, 0)))
+    elif kenh == 'G':
+        channel_image = Image.merge('RGB', (Image.new('L', image.size, 0), channels[1], Image.new('L', image.size, 0)))
+    elif kenh == 'B':
+        channel_image = Image.merge('RGB', (Image.new('L', image.size, 0), Image.new('L', image.size, 0), channels[2]))
+    else:
+        raise ValueError("Invalid channel. Choose 'R', 'G', or 'B'.")
+
+    return channel_image
 def preprocessing_uploader(file, model):
     bytes_data = file.read()
     inputShape = (224, 224)
-    image = Image.open(BytesIO(bytes_data))
+    image = tach_kenh_mau(BytesIO(bytes_data)),'R.)
     image = image.convert("RGB")
     image = image.resize(inputShape)
     image = img_to_array(image)
