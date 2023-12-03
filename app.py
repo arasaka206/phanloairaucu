@@ -63,22 +63,22 @@ if file is None:
         st.text('Đang chờ tải lên....')
 
 else:
-        slot = st.empty()
-        slot.text('Hệ thống đang thực thi chẩn đoán....')
+	slot = st.empty()
+	slot.text('Hệ thống đang thực thi chẩn đoán....')
         	
-        pred = preprocessing_uploader(file, model)
-        test_image = Image.open(file)
-        st.image(test_image, caption="Ảnh đầu vào", width = 400)
-        class_names = ['chuaphun', 'phun5ngay']
+	pred = preprocessing_uploader(file, model)
+	test_image = Image.open(file)
+	st.image(test_image, caption="Ảnh đầu vào", width = 400)
+	class_names = ['chuaphun', 'phun5ngay']
 
-        result = class_names[np.argmax(pred)]
-        st.text(pred)
+	result = class_names[np.argmax(pred)]
+	st.text(pred)
 	st.text(result)
         
-        if result == "phun5ngay":
+	if result == "phun5ngay":
             statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
             st.error(statement)
-        if result == "chuaphun":
+	if result == "chuaphun":
             statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
             st.success(statement)
 	#slot.success('Hoàn thành chẩn đoán!')
