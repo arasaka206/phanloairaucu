@@ -56,15 +56,16 @@ else:
         class_names = ['chuaphun', 'phun5ngay']
 
         result = class_names[np.argmax(pred)]
+	slot.text(pred)
 	
         
         if result == "phun5ngay":
             statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
             st.error(statement)
-	    slot.text(pred)
+	    
         if result == "chuaphun":
             statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
             st.success(statement)
-	    slot.text(pred)
+	    
 	
 	slot.success('Hoàn thành chẩn đoán!')
