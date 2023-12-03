@@ -64,4 +64,4 @@ else:
         if result == "chuaphun":
             statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
             st.success(statement)
-	slot.success('Hoàn thành chẩn đoán!')
+	#slot.success('Hoàn thành chẩn đoán!')
