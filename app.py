@@ -33,7 +33,7 @@ def preprocessing_uploader(file, model):
     image = Image.open(BytesIO(bytes_data))
     image = image.convert("RGB")
     image = image.resize(inputShape)
-    image = img_to_array(image)
+#    image = img_to_array(image)
     image = np.expand_dims(image, axis=0)
     
     prediction = model.predict(image) 
@@ -53,7 +53,7 @@ else:
         slot = st.empty()
         slot.text('Hệ thống đang thực thi chẩn đoán....')
         	
-        pred = predict_class(file, model)
+        pred = preprocessing_uploader(file, model)
         test_image = Image.open(file)
         st.image(test_image, caption="Ảnh đầu vào", width = 400)
         class_names = ['chuaphun', 'phun5ngay']
