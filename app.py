@@ -48,6 +48,7 @@ def preprocessing_uploader(file, model):
     image = image.resize(inputShape)
     image = img_to_array(image)
     image = np.expand_dims(image, axis=0)
+    st.image(image)
     
     prediction = model.predict(image) 
     return prediction
