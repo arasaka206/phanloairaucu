@@ -15,7 +15,7 @@ def load_model():
 	return model
 def predict_class(file, model):
 	bytes_data = file.read()
-    	image = Image.open(BytesIO(bytes_data))
+        image = Image.open(BytesIO(bytes_data))
     	image = image.convert("RGB")
 # 	image = tf.cast(image, tf.float32)
         image = np.resize(image, (224,224))
