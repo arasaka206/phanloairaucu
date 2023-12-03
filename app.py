@@ -73,6 +73,7 @@ else:
 
         result = class_names[np.argmax(pred)]
         st.text(pred)
+	st.text(result)
         
         if result == "phun5ngay":
             statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
