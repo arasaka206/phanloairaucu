@@ -11,7 +11,7 @@ from tensorflow.keras.preprocessing.image import load_img
 from io import BytesIO
 
 def load_model():
-	model = tf.keras.models.load_model('model2.h5')
+	model = tf.keras.models.load_model('image_classifier_model.h5')
 	return model
 def predict_class(image, model):
 # 	image = tf.cast(image, tf.float32)
@@ -64,4 +64,4 @@ else:
         if result == "chuaphun":
             statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
             st.success(statement)
-	slot.success('Hoàn thành chẩn đoán!')
+	#slot.success('Hoàn thành chẩn đoán!')
