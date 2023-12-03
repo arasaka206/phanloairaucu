@@ -11,7 +11,7 @@ from tensorflow.keras.preprocessing.image import load_img
 from io import BytesIO
 
 def load_model():
-	model = tf.keras.models.load_model('softmax.h5')
+	model = tf.keras.models.load_model('remake.h5')
 	return model
 def predict_class(file, model):
 	bytes_data = file.read()
