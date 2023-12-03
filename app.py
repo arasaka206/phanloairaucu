@@ -43,7 +43,7 @@ def tach_kenh_mau(buc_hinh, kenh):
 def preprocessing_uploader(file, model):
     bytes_data = file.read()
     inputShape = (224, 224)
-    image = tach_kenh_mau(BytesIO(bytes_data)),'R.)
+    image = tach_kenh_mau(BytesIO(bytes_data)),'R')
     image = image.convert("RGB")
     image = image.resize(inputShape)
     image = img_to_array(image)
