@@ -46,7 +46,6 @@ def preprocessing_uploader(file, model):
     image = tach_kenh_mau(BytesIO(bytes_data),'R')
     image = image.convert("RGB")
     image = image.resize(inputShape)
-    st.image(image)
     image = img_to_array(image)
     image = np.expand_dims(image, axis=0)
     
