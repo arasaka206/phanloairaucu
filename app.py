@@ -66,7 +66,7 @@ else:
 	class_names = ['xalach', 'raumuong','caibe', 'bapcai','mongtoi']
 
 	result = class_names[np.argmax(pred)]
-#	st.text(pred)
+	st.text(pred)
 #	st.text(result)
         
 	if result == "xalach":
