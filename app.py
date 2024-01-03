@@ -18,21 +18,9 @@ def load_model():
 	model4 = tf.keras.models.load_model('Bapcai.h5')
 	model5 = tf.keras.models.load_model('mongtoi.h5')
 	return model, model1, model2, model3, model4, model5
-def predict_class(file, model):
-	bytes_data = file.read()
-	image = Image.open(BytesIO(bytes_data))
-	image = image.convert("RGB")
-# 	image = tf.cast(image, tf.float32)
-	image = np.resize(image, (224,224))
-# 	image_1 = image
-	image = np.dstack((image,image,image))
-# 	image_2 = image
-# 	cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
-	image = np.expand_dims(image, axis = 0)         
-	prediction = model.predict(image)
-	return prediction
 def tach_kenh_mau(buc_hinh, kenh):
-    image = Image.open(buc_hinh)
+    #image = Image.open(buc_hinh)
+    image = buc_hinh
     channels = list(image.split())
 
     if kenh == 'R':
@@ -46,9 +34,9 @@ def tach_kenh_mau(buc_hinh, kenh):
 
     return channel_image
 def preprocessing_uploader(file, model):
-    bytes_data = file.read()
     inputShape = (224, 224)
-    image = tach_kenh_mau(BytesIO(bytes_data),'R')
+    bytes_data = Image.open(file)
+    image = tach_kenh_mau(bytes_data,'R')
     image = image.convert("RGB")
     image = image.resize(inputShape)
     image = img_to_array(image)
@@ -71,8 +59,9 @@ else:
 	slot = st.empty()
 	slot.text('Hệ thống đang thực thi chẩn đoán....')
         	
-	pred = preprocessing_uploader(file, model)
+	
 	test_image = Image.open(file)
+	pred = preprocessing_uploader(file, model)
 	st.image(test_image, caption="Ảnh đầu vào", width = 400)
 	class_names = ['xalach', 'raumuong','caibe', 'bapcai','mongtoi']
 
@@ -81,48 +70,48 @@ else:
 #	st.text(result)
         
 	if result == "xalach":
-	    pred = preprocessing_uploader(file, model1)
-	    class_names = ['daphun','chuaphun']
-	    if result == "daphun":
-        	statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
-		st.success(statement)
-	    else:
-	    	statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
-            	st.error(statement)
+		pred = preprocessing_uploader(file, model1)
+		class_names = ['daphun','chuaphun']
+		if result == "daphun":
+		    statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
+		    st.success(statement)
+		else:
+		    statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
+		    st.error(statement)
 	if result == "raumuong":
-            pred = preprocessing_uploader(file, model2)
-	    class_names = ['daphun','chuaphun']
-	    if result == "daphun":
-        	statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
-		st.success(statement)
-	    else:
-	    	statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
-            	st.error(statement)
+		pred = preprocessing_uploader(file, model2)
+		class_names = ['daphun','chuaphun']
+		if result == "daphun":
+		    statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
+		    st.success(statement)
+		else:
+		    statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
+		    st.error(statement)
 	if result == "caibe":
-            pred = preprocessing_uploader(file, model3)
-	    class_names = ['daphun','chuaphun']
-	    if result == "daphun":
-        	statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
-		st.success(statement)
-	    else:
-	    	statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
-            	st.error(statement)
+		pred = preprocessing_uploader(file, model3)
+		class_names = ['daphun','chuaphun']
+		if result == "daphun":
+		    statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
+		    st.success(statement)
+		else:
+		    statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
+		    st.error(statement)
 	if result == "bapcai":
-            pred = preprocessing_uploader(file, model4)
-	    class_names = ['daphun','chuaphun']
-	    if result == "daphun":
-        	statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
-		st.success(statement)
-	    else:
-	    	statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
-            	st.error(statement)
+		pred = preprocessing_uploader(file, model4)
+		class_names = ['daphun','chuaphun']
+		if result == "daphun":
+		    statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
+		    st.success(statement)
+		else:
+		    statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
+		    st.error(statement)
 	if result == "mongtoi":
-            pred = preprocessing_uploader(file, model5)
-	    class_names = ['daphun','chuaphun']
-	    if result == "daphun":
-        	statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
-		st.success(statement)
-	    else:
-	    	statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
-            	st.error(statement)
+		pred = preprocessing_uploader(file, model5)
+		class_names = ['daphun','chuaphun']
+		if result == "daphun":
+		    statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
+		    st.success(statement)
+		else:
+		    statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
+		    st.error(statement)
 	#slot.success('Hoàn thành chẩn đoán!')
