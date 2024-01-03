@@ -81,48 +81,48 @@ else:
 #	st.text(result)
         
 	if result == "xalach":
-	    pred = preprocessing_uploader(file, model1)
-	    class_names = ['daphun','chuaphun']
-	    if result == "daphun":
+		pred = preprocessing_uploader(file, model1)
+		class_names = ['daphun','chuaphun']
+		if result == "daphun":
 		    statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
 		    st.success(statement)
-	    else:
+		else:
 		    statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
 		    st.error(statement)
 	if result == "raumuong":
-            pred = preprocessing_uploader(file, model2)
-	    class_names = ['daphun','chuaphun']
-	    if result == "daphun":
+		pred = preprocessing_uploader(file, model2)
+		class_names = ['daphun','chuaphun']
+		if result == "daphun":
 		    statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
 		    st.success(statement)
-	    else:
+		else:
 		    statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
 		    st.error(statement)
 	if result == "caibe":
-            pred = preprocessing_uploader(file, model3)
-	    class_names = ['daphun','chuaphun']
-	    if result == "daphun":
+		pred = preprocessing_uploader(file, model3)
+		class_names = ['daphun','chuaphun']
+		if result == "daphun":
 		    statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
 		    st.success(statement)
-	    else:
+		else:
 		    statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
 		    st.error(statement)
 	if result == "bapcai":
-            pred = preprocessing_uploader(file, model4)
-	    class_names = ['daphun','chuaphun']
-	    if result == "daphun":
+		pred = preprocessing_uploader(file, model4)
+		class_names = ['daphun','chuaphun']
+		if result == "daphun":
 		    statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
 		    st.success(statement)
-	    else:
+		else:
 		    statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
 		    st.error(statement)
 	if result == "mongtoi":
-            pred = preprocessing_uploader(file, model5)
-	    class_names = ['daphun','chuaphun']
-	    if result == "daphun":
+		pred = preprocessing_uploader(file, model5)
+		class_names = ['daphun','chuaphun']
+		if result == "daphun":
 		    statement = str('Kết quả chẩn đoán: **Rau đã phun thuốc trừ sâu trong vòng dưới 5 ngày**')
 		    st.success(statement)
-	    else:
+		else:
 		    statement = str('Kết quả chẩn đoán: **Rau chưa được phun thuốc trừ sâu**')
 		    st.error(statement)
 	#slot.success('Hoàn thành chẩn đoán!')
