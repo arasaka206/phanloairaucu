@@ -35,7 +35,7 @@ def tach_kenh_mau(buc_hinh, kenh):
     return channel_image
 def preprocessing_uploader(file, model):
     inputShape = (224, 224)
-    bytes_data = Image.open(buc_hinh)
+    bytes_data = Image.open(file)
     image = tach_kenh_mau(bytes_data,'R')
     image = image.convert("RGB")
     image = image.resize(inputShape)
