@@ -35,8 +35,9 @@ def tach_kenh_mau(buc_hinh, kenh):
     return channel_image
 def preprocessing_uploader(file, model):
     inputShape = (224, 224)
-    #image = tach_kenh_mau(BytesIO(bytes_data),'R')
-    image = file.convert("RGB")
+    bytes_data = file.read()
+    image = tach_kenh_mau(BytesIO(bytes_data),'R')
+    image = image.convert("RGB")
     image = image.resize(inputShape)
     image = img_to_array(image)
     image = np.expand_dims(image, axis=0)
@@ -60,7 +61,7 @@ else:
         	
 	
 	test_image = Image.open(file)
-	pred = preprocessing_uploader(test_image, model)
+	pred = preprocessing_uploader(file, model)
 	st.image(test_image, caption="Ảnh đầu vào", width = 400)
 	class_names = ['xalach', 'raumuong','caibe', 'bapcai','mongtoi']
 
