@@ -18,19 +18,6 @@ def load_model():
 	model4 = tf.keras.models.load_model('Bapcai.h5')
 	model5 = tf.keras.models.load_model('mongtoi.h5')
 	return model, model1, model2, model3, model4, model5
-def predict_class(file, model):
-	bytes_data = file.read()
-	image = Image.open(BytesIO(bytes_data))
-	image = image.convert("RGB")
-# 	image = tf.cast(image, tf.float32)
-	image = np.resize(image, (224,224))
-# 	image_1 = image
-	image = np.dstack((image,image,image))
-# 	image_2 = image
-# 	cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
-	image = np.expand_dims(image, axis = 0)         
-	prediction = model.predict(image)
-	return prediction
 def tach_kenh_mau(buc_hinh, kenh):
     #image = Image.open(buc_hinh)
     image = buc_hinh
@@ -47,10 +34,9 @@ def tach_kenh_mau(buc_hinh, kenh):
 
     return channel_image
 def preprocessing_uploader(file, model):
-    bytes_data = file.read()
     inputShape = (224, 224)
     #image = tach_kenh_mau(BytesIO(bytes_data),'R')
-    image = BytesIO(bytes_data)
+    image = BytesIO(file)
     image = image.convert("RGB")
     image = image.resize(inputShape)
     image = img_to_array(image)
@@ -73,8 +59,9 @@ else:
 	slot = st.empty()
 	slot.text('Hệ thống đang thực thi chẩn đoán....')
         	
-	pred = preprocessing_uploader(file, model)
+	
 	test_image = Image.open(file)
+	pred = preprocessing_uploader(test_image, model)
 	st.image(test_image, caption="Ảnh đầu vào", width = 400)
 	class_names = ['xalach', 'raumuong','caibe', 'bapcai','mongtoi']
 
