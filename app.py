@@ -33,7 +33,7 @@ def predict_class(file, model):
 	return prediction
 def tach_kenh_mau(buc_hinh, kenh):
     #image = Image.open(buc_hinh)
-    image = buchinh
+    image = buc_hinh
     channels = list(image.split())
 
     if kenh == 'R':
