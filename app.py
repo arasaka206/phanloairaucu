@@ -11,7 +11,7 @@ from tensorflow.keras.preprocessing.image import load_img
 from io import BytesIO
 
 def load_model():
-	model = tf.keras.models.load_model('softmax.h5')
+	model = tf.keras.models.load_model('dautien.h5')
 	model1 = tf.keras.models.load_model('xalach.h5')
 	model2 = tf.keras.models.load_model('raumuong.h5')
 	model3 = tf.keras.models.load_model('caibe.h5')
